@@ -28,6 +28,10 @@ module.exports = {
         use: {
           loader: `ts-loader`,
         },
+      },
+      {
+        test: /\.scss$/,
+        use: [ 'style-loader', 'postcss-loader', 'sass-loader' ]
       }
     ],
   },
