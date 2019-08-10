@@ -38,6 +38,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer(undefined, {})).toEqual({
       employees: [],
       filter: ``,
+      showArchive: false,
       sort: `byName`
     });
   });
