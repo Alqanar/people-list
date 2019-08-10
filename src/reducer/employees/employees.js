@@ -1,6 +1,7 @@
 const initialState = {
   employees: [],
   filter: ``,
+  showArchive: false,
   sort: `byName`
 };
 
@@ -8,6 +9,7 @@ const ActionType = {
   ADD_EMPLOYEE: `ADD_EMPLOYEE`,
   SET_EMPLOYEES: `SET_EMPLOYEES`,
   SET_FILTER: `SET_FILTER`,
+  SET_SHOW_ARCHIVE: `SET_SHOW_ARCHIVE`,
   SET_SORT: `SET_SORT`,
   SET_STATUS: `SET_STATUS`
 };
@@ -26,6 +28,11 @@ const ActionCreator = {
   setFilter: (filter) => ({
     type: ActionType.SET_FILTER,
     payload: filter
+  }),
+
+  setShowArchive: (status) => ({
+    type: ActionType.SET_SHOW_ARCHIVE,
+    payload: status
   }),
 
   setSort: (sort) => ({
@@ -51,22 +58,28 @@ const reducer = (state = initialState, action) => {
         ]
       };
 
+    case ActionType.SET_EMPLOYEES:
+      return {
+        ...state,
+        employees: action.payload
+      };
+
     case ActionType.SET_FILTER:
       return {
         ...state,
         filter: action.payload
       };
 
+    case ActionType.SET_SHOW_ARCHIVE:
+      return {
+        ...state,
+        showArchive: action.payload
+      };
+
     case ActionType.SET_SORT:
       return {
         ...state,
         sort: action.payload
-      };
-
-    case ActionType.SET_EMPLOYEES:
-      return {
-        ...state,
-        employees: action.payload
       };
 
     case ActionType.SET_STATUS:
