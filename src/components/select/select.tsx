@@ -22,8 +22,14 @@ class Select extends React.PureComponent<IProps, null> {
       <>
         <div className="filter__select">
           <label className="visual-hidden" htmlFor="select-sorting">Фильтрация по должности</label>
-          <select className="filter__field filter__field--sorting" name="select-sorting" id="select-sorting">
-            {this.optionItem(vocabularyPosts, filter)}
+          <select
+            className="filter__field filter__field--sorting"
+            name="select-sorting"
+            id="select-sorting"
+            value={filter}
+            onChange={this.handleFilterItemSelect}
+          >
+            {this.optionItem(vocabularyPosts)}
           </select>
         </div>
       </>
@@ -33,17 +39,14 @@ class Select extends React.PureComponent<IProps, null> {
   private handleFilterItemSelect(event): void {
     const {onFilterSelect} = this.props;
 
-    event.preventDefault();
     onFilterSelect(event.target.value);
   }
 
-  private optionItem = (selectFilter: object, filter: string): React.ReactElement[] => {
+  private optionItem = (selectFilter: object): React.ReactElement[] => {
     return Object.keys(selectFilter).map((elem, i): React.ReactElement => (
       <option
         key={i}
         value={elem}
-        selected={filter === elem}
-        onChange={this.handleFilterItemSelect}
       >
         {selectFilter[elem]}
       </option>
