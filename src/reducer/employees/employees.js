@@ -1,6 +1,6 @@
 const initialState = {
   employees: [],
-  filter: ``,
+  filter: `without`,
   showArchive: false,
   sort: `byName`
 };

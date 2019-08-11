@@ -37,7 +37,7 @@ describe(`Reducer works correctly`, () => {
   it(`without additional parameters should return initial state`, () => {
     expect(reducer(undefined, {})).toEqual({
       employees: [],
-      filter: ``,
+      filter: `without`,
       showArchive: false,
       sort: `byName`
     });
