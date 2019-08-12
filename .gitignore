@@ -64,3 +64,8 @@ typings/
 build/
 public/bundle.js
 public/bundle.js.map
+public/*.js
+public/*.map
+public/*.css
+public/*.woff
+public/*.woff2

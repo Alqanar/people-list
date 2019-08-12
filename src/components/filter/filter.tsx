@@ -1,9 +1,11 @@
 import * as React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
-import {ActionCreator} from "../../reducer/employees/employees.js";
+import { ActionCreator } from "../../reducer/employees/employees.js";
 import Checkbox from "../checkbox/checkbox";
 import Select from "../select/select";
+
+import "./style.scss";
 
 interface IProps {
   filter: string;
@@ -18,7 +20,7 @@ class Filter extends React.PureComponent<IProps, null> {
   }
 
   public render(): React.ReactElement {
-    const {filter, onSetFilter, onSetShowArchive, showArchive} = this.props;
+    const { filter, onSetFilter, onSetShowArchive, showArchive } = this.props;
 
     return (
       <form className="filter">
@@ -50,7 +52,7 @@ const mapDispatchToProps = (dispatch): object => ({
   onSetShowArchive: (clickedCheckbox): void => dispatch(ActionCreator.setShowArchive(clickedCheckbox))
 });
 
-export {Filter};
+export { Filter };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);
 

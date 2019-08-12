@@ -1,10 +1,11 @@
 import * as React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
-import {ActionCreator} from "../../reducer/employees/employees.js";
-import {sortingVariants} from "../../utility";
+import { ActionCreator } from "../../reducer/employees/employees.js";
+import { sortingVariants } from "../../utility";
 import SortingListItem from "../sorting-list-item/sorting-list-item";
 
+import "./style.scss";
 
 interface IProps {
   activeSort: string;
@@ -17,10 +18,10 @@ class SortingList extends React.PureComponent<IProps, null> {
   }
 
   public render(): React.ReactElement {
-    const {activeSort, onSetSort} = this.props;
+    const { activeSort, onSetSort } = this.props;
 
     const sortingList = sortingVariants
-      .map(({name, type, isDisabled}, i): React.ReactElement =>
+      .map(({ name, type, isDisabled }, i): React.ReactElement =>
         <SortingListItem
           name={name}
           type={type}
@@ -32,7 +33,7 @@ class SortingList extends React.PureComponent<IProps, null> {
       )
 
     return (
-      <ul className="same-list list-page-content__sorting-name-list employees-list-title">
+      <ul className="same-list employees-list-title">
         {sortingList}
       </ul>
     );
@@ -48,6 +49,6 @@ const mapDispatchToProps = (dispatch): object => ({
   onSetSort: (clickedSorting): void => dispatch(ActionCreator.setSort(clickedSorting))
 });
 
-export {SortingList};
+export { SortingList };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SortingList);

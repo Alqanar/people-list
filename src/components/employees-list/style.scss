@@ -1,0 +1,58 @@
+@import "../../colors.scss";
+
+.employees-list p {
+  margin: 0;
+}
+
+.employees-list__item {
+  position: relative;
+
+  &:not(:last-child) {
+    border-bottom: 5px dashed $grey-color;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 90px;
+      width: 35px;
+      height: 35px;
+      background-color: $grey-color;
+      border-radius: 50%;
+      content: "";
+    }
+
+    &::before {
+      left: -34px;
+    }
+
+    &::after {
+      right: -29px;
+    }
+  }
+}
+
+.employees-list__link {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.employees-list__name {
+  color: $light-violet-color;
+  font-weight: 900;
+}
+
+.employees-list__phone,
+.employees-list__role {
+  font-size: 12px;
+  padding-top: 3px;
+}
+
+.employees-list__birthday-long {
+  display: none;
+}
+
+.employees-list__birthday-short {
+  align-self: center;
+}

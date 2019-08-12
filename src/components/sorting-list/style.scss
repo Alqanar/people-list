@@ -1,0 +1,54 @@
+@import "../../colors.scss";
+
+.employees-list-title {
+  position: relative;
+  display: flex;
+  border-bottom: 5px dashed $grey-color;
+  justify-content: space-between;
+  padding-bottom: 16px;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: $grey-color;
+    border-radius: 50%;
+    content: "";
+  }
+
+  &::before {
+    left: -34px;
+  }
+
+  &::after {
+    right: -29px;
+  }
+}
+
+.employees-list-title__sorting-button {
+  display: block;
+  padding: 0;
+  font-family: inherit;
+  background-color: $white-color;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:disabled {
+    display: none;
+  }
+
+  &--active,
+  &:active {
+    color: $violet-color;
+    font-weight: 900;
+  }
+
+  &:hover,
+  &:focus {
+    color: $pink-color;
+    outline: none;
+  }
+}

@@ -14,13 +14,13 @@ class Checkbox extends React.PureComponent<IProps, null> {
   }
 
   public render(): React.ReactElement {
-    const {showArchive, name} = this.props;
+    const { showArchive, name } = this.props;
 
     return (
       <>
         <div className="filter__checkbox">
-          <input 
-            className="visual-hidden"
+          <input
+            className="visual-hidden filter__checkbox-input"
             type="checkbox"
             name="archive"
             id="filter__archive"
@@ -34,7 +34,7 @@ class Checkbox extends React.PureComponent<IProps, null> {
   }
 
   private handleCheckboxChange(event): void {
-    const {onCheckboxChange} = this.props;
+    const { onCheckboxChange } = this.props;
 
     onCheckboxChange(event.target.checked);
   }

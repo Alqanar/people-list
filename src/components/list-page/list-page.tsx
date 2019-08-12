@@ -1,10 +1,11 @@
 import * as React from "react";
 
-import {IEmployee} from "../../types";
+import { IEmployee } from "../../types";
 import SortingList from "../sorting-list/sorting-list";
 import Filter from "../filter/filter";
 import EmployeesList from "../employees-list/employees-list";
 
+import "./style.scss";
 
 interface IProps {
   employeeList: IEmployee[];
@@ -17,15 +18,17 @@ const ListPage: React.FC<IProps> = (props): React.ReactElement => {
 
   return (
     <>
-      <div className="list-page-content">
-        <div className="list-page-content__wrapper-titles">
-          <h1 className="title list-page-content__title">Список сотрудников</h1>
-          <Filter />
+      <div className="list-page">
+        <h1 className="title list-page__title">База сотрудников</h1>
+        <Filter />
+        <section className="list-page__employees-list">
+          <h2 className="visual-hidden">Список сотрудников</h2>
           <SortingList />
           <EmployeesList
             employees={employeeList}
           />
-        </div>
+        </section>
+
 
       </div>
     </>

@@ -1,7 +1,9 @@
 import * as React from "react";
 
 import EmployeesListItem from "../employees-list-item/employees-list-item";
-import {IEmployee} from "../../types";
+import { IEmployee } from "../../types";
+
+import "./style.scss";
 
 
 interface IProps {
@@ -9,7 +11,7 @@ interface IProps {
 }
 
 const EmployeesList: React.FC<IProps> = (props): React.ReactElement => {
-  const {employees} = props;
+  const { employees } = props;
 
   const employeesList = employees
     .map((employee): React.ReactElement =>

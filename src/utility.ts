@@ -2,19 +2,25 @@ export const EMPTY_FILTER = `without`;
 export const DEFAULT_SORTING = `byName`;
 
 export const vocabularyPosts = {
-  [EMPTY_FILTER]: `Не выбрано`,
+  [EMPTY_FILTER]: `Все должности`,
   driver: `Водитель`,
   waiter: `Официант`,
   cook: `Повар`
 }
 
-export const dateStringOptions = {
+export const dateLongStringOptions = {
   year: `numeric`,
   month: `long`,
   day: `numeric`
 }
 
-export const sortingVariants =[
+export const dateShortStringOptions = {
+  year: `2-digit`,
+  month: `2-digit`,
+  day: `2-digit`
+}
+
+export const sortingVariants = [
   {
     name: `Имя сотрудника`,
     type: `byName`,
