@@ -1,5 +1,7 @@
 import {createSelector} from "reselect";
 
+import {EMPTY_FILTER, DEFAULT_SORTING} from "../../utility.ts";
+
 
 const getFilter = (state) => (
   state.employees.filter
@@ -9,13 +11,13 @@ const getEmloyees = (state) => (
   state.employees.employees
 );
 
-const getStatus = (state) => {
+const getStatus = (state) => (
   state.employees.showArchive
-}
+);
 
-const getSort = (state) => {
+const getSort = (state) => (
   state.employees.sort
-}
+);
 
 const getEmloyeesWithStatus = createSelector(
   getStatus,
@@ -31,13 +33,13 @@ const getEmloyeesWithStatus = createSelector(
   }
 );
 
-export const getFilterEmployees = createSelector(
+const getFilterEmployees = createSelector(
   getFilter,
 
   getEmloyeesWithStatus,
 
   (selectedFilter, employeesList) => {
-    if (selectedFilter === ``) {
+    if (selectedFilter === EMPTY_FILTER) {
       return employeesList;
     }
     return employeesList.filter((employee) =>
@@ -51,20 +53,24 @@ export const getSortEmployees = createSelector(
   getFilterEmployees,
 
   (selectedSort, employeesList) => {
-    if (selectedSort === `byName`) {
-      return employeesList.sort((a, b) => {
+    let sortedEmployees;
+    if (selectedSort === DEFAULT_SORTING) {
+      sortedEmployees = employeesList.sort((a, b) => {
         if (a.name < b.name) return -1;
         if (a.name > b.name) return 1;
         return 0;
       });
-    }
-    return employeesList.sort((a, b) => {
-      const aTime = a.getTime();
-      const bTime = b.getTime();
+    } else {
+      sortedEmployees = employeesList.sort((a, b) => {
+        const aTime = a.birthday.getTime();
+        const bTime = b.birthday.getTime();
 
-      if (aTime < bTime) return -1;
-      if (aTime > bTime) return 1;
-      return 0;
-    });
+        if (aTime < bTime) return -1;
+        if (aTime > bTime) return 1;
+        return 0;
+      });
+    }
+    
+    return [...sortedEmployees];
   }
 )

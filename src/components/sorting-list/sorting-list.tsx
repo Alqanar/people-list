@@ -2,6 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 
 import {ActionCreator} from "../../reducer/employees/employees.js";
+import {sortingVariants} from "../../utility";
 import SortingListItem from "../sorting-list-item/sorting-list-item";
 
 
@@ -9,24 +10,6 @@ interface IProps {
   activeSort: string;
   onSetSort: (clickedSorting: string) => Promise<void>;
 }
-
-const sortingVariants =[
-  {
-    name: `Имя сотрудника`,
-    type: `byName`,
-    isDisabled: false
-  },
-  {
-    name: `Должность`,
-    type: ``,
-    isDisabled: true
-  },
-  {
-    name: `День Рождения`,
-    type: `byBirthday`,
-    isDisabled: false
-  }
-]
 
 class SortingList extends React.PureComponent<IProps, null> {
   public constructor(props) {
@@ -49,7 +32,7 @@ class SortingList extends React.PureComponent<IProps, null> {
       )
 
     return (
-      <ul className="list-page-content__sorting-name-list employees-list-title">
+      <ul className="same-list list-page-content__sorting-name-list employees-list-title">
         {sortingList}
       </ul>
     );

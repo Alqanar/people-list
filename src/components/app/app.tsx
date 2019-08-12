@@ -4,6 +4,7 @@ import {Switch, Route} from "react-router-dom";
 
 import ListPage from "../list-page/list-page";
 import {IEmployee} from "../../types";
+import {getSortEmployees} from "../../reducer/employees/selectors.js";
 
 
 interface IProps {
@@ -38,7 +39,7 @@ class App extends React.PureComponent<IProps, null> {
 
 const mapStateToProps = (state, ownProps): void => ({
   ...ownProps,
-  employeesData: state.employees.employees,
+  employeesData: getSortEmployees(state),
 });
 
 export {App};
