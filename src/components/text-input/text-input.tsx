@@ -15,12 +15,13 @@ const TextInput: React.FC<IProps> = (props): React.ReactElement => {
       labelName,
       typeInput,
       placeholder = undefined,
-      pattern = undefined
+      pattern = undefined,
+      validate = undefined
     }
   } = props;
 
   return (
-    <Field name={fieldName}>
+    <Field name={fieldName} validate={validate}>
       {({ input, meta }): React.ReactElement => (
         <li className={`form__item form__item--${fieldName}`}>
           <label className={`form__label form__label--${fieldName}`}>{labelName}</label>
@@ -31,7 +32,7 @@ const TextInput: React.FC<IProps> = (props): React.ReactElement => {
             placeholder={placeholder}
             pattern={pattern}
           />
-          {meta.error && meta.touched && <span>{meta.error}</span>}
+          {meta.error && meta.touched && <span className="form__error">{meta.error}</span>}
         </li>
       )}
     </Field>

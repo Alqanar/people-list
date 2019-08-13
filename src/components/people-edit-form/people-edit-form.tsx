@@ -1,7 +1,10 @@
 import * as React from "react";
 import { Form } from "react-final-form";
+import { Link } from "react-router-dom";
 
 import TextInput from "../text-input/text-input";
+import SelectFinalForm from "../select-final-form/select-final-form";
+import CheckboxFinalForm from "../checkbox-final-form/checkbox-final-form";
 import { INewEmployee, IEmployee } from "../../types";
 import { paramsInput, addZero } from "../../utility";
 
@@ -35,32 +38,31 @@ class PeopleEditForm extends React.PureComponent<IProps, null> {
     const initialValues = {
       name: employee.name || ``,
       phone: employee.phone || ``,
-      birthday: `${bd.getFullYear()}-${addZero(bd.getMonth() + 1)}-${bd.getDate()}` || ``
+      birthday: `${bd.getFullYear()}-${addZero(bd.getMonth() + 1)}-${bd.getDate()}` || ``,
+      role: employee.role,
+      isArchive: employee.isArchive
     };
 
     return (
       <Form
         onSubmit={this.handleButtonSubmit}
         initialValues={initialValues}
-        render={({ handleSubmit, form }): React.ReactElement => (
-          <form onSubmit={handleSubmit}>
+        render={({ handleSubmit }): React.ReactElement => (
+          <form className="form" onSubmit={handleSubmit}>
             <ul className="same-list">
               {textInputs}
-
-              <div className="form-page__buttons">
+              <SelectFinalForm />
+              <CheckboxFinalForm />
+              <div className="form__buttons">
                 <button
-                  className="form-page__button"
+                  className="form__button"
                   type="submit"
                 >
-                  {isNew ? `Добавить` : `Изменить`}
+                  {isNew ? `Добавить` : `💾 Сохранить`}
                 </button>
-                <button
-                  className="form-page__button"
-                  type="button"
-                  onClick={form.reset}
-                >
-                  Сброс
-                </button>
+                <Link to={`/`} className="link form__link">
+                  ❌ Отмена
+                </Link>
               </div>
             </ul>
           </form>
@@ -69,10 +71,33 @@ class PeopleEditForm extends React.PureComponent<IProps, null> {
     );
   }
 
+  private modifyEmployee = (objectData): IEmployee => {
+    const birthdayArray = objectData.birthday
+      .split('-')
+      .map((elem): number => parseInt(elem, 10));
+
+    const birthdayAsDate = new Date(
+      birthdayArray[0],
+      birthdayArray[1] - 1,
+      birthdayArray[2]
+    );
+
+    const data = {
+      ...objectData,
+      birthday: birthdayAsDate
+    }
+    if (this.props.isNew) {
+      data.id = Date.now();
+    } else {
+      data.id = this.props.employee.id;
+    }
+    return data;
+  }
+
   private handleButtonSubmit(values): void {
     const { onButtonSubmit } = this.props;
 
-    onButtonSubmit(values);
+    onButtonSubmit(this.modifyEmployee(values));
   }
 }
 

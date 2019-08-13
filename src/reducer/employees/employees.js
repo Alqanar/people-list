@@ -7,6 +7,7 @@ const initialState = {
 
 const ActionType = {
   ADD_EMPLOYEE: `ADD_EMPLOYEE`,
+  EDIT_EMPLOYEE: `EDIT_EMPLOYEE`,
   SET_EMPLOYEES: `SET_EMPLOYEES`,
   SET_FILTER: `SET_FILTER`,
   SET_SHOW_ARCHIVE: `SET_SHOW_ARCHIVE`,
@@ -18,6 +19,11 @@ const ActionCreator = {
   addEmployee: (employee) => ({
     type: ActionType.ADD_EMPLOYEE,
     payload: employee
+  }),
+
+  editEmployee: (editedEmployee) => ({
+    type: ActionType.EDIT_EMPLOYEE,
+    payload: editedEmployee
   }),
 
   setEmployees: (employeeList) => ({
@@ -56,6 +62,19 @@ const reducer = (state = initialState, action) => {
           ...state.employees,
           action.payload,
         ]
+      };
+
+    case ActionType.EDIT_EMPLOYEE:
+      return {
+        ...state,
+        employees: state.employees.map((employee) => {
+          if (employee.id === action.payload.id) {
+            return {
+              ...action.payload
+            };
+          }
+          return employee;
+        })
       };
 
     case ActionType.SET_EMPLOYEES:

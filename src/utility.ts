@@ -1,3 +1,5 @@
+import { FieldValidator } from "final-form";
+
 export const EMPTY_FILTER = `without`;
 export const DEFAULT_SORTING = `byName`;
 
@@ -38,25 +40,56 @@ export const sortingVariants = [
   }
 ]
 
+const phonePattern = `\\+7 \\([0-9]{3}\\) [0-9]{3}-[0-9]{4}`
+const birthdayPattern = `[0-9]{4}-[0-9]{2}-[0-9]{2}`
+
+const required = (value): string | undefined =>
+  (value ? undefined : `Поле не может быть пустым`);
+
+const validatePhone = (value): string | undefined => {
+  const idealPhone = new RegExp(phonePattern);
+
+  if (idealPhone.test(value)) {
+    return undefined;
+  }
+  return `Введите телефон в формате +7 (999) 999-9999`
+}
+
+const validateBirthday = (value): string | undefined => {
+  const idealBirthday = new RegExp(birthdayPattern);
+
+  if (idealBirthday.test(value)) {
+    return undefined;
+  }
+  return `Введите дату рождения в формате ГГГГ-ММ-ДД`
+}
+
+const composeValidators = (...validators): FieldValidator<string> => (value): string | undefined =>
+  validators.reduce((error, validator): string | undefined => error || validator(value), undefined)
+
+
 export const paramsInput = [
   {
     fieldName: `name`,
     labelName: `Имя сотрудника`,
     typeInput: `text`,
-    placeholder: `Иван Иванов`
+    placeholder: `Иван Иванов`,
+    validate: required
   },
   {
     fieldName: `phone`,
     labelName: `Телефон`,
     typeInput: `phone`,
     placeholder: `+7 (999) 999-9999`,
-    pattern: `\\+7 \\([0-9]{3}\\) [0-9]{3}-[0-9]{4}`
+    pattern: phonePattern,
+    validate: composeValidators(required, validatePhone)
   },
   {
     fieldName: `birthday`,
     labelName: `Дата рождения`,
     typeInput: `date`,
-    pattern: `[0-9]{4}-[0-9]{2}-[0-9]{2}`
+    pattern: birthdayPattern,
+    validate: composeValidators(required, validateBirthday)
   }
 ]
 

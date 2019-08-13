@@ -9,14 +9,15 @@ import { vocabularyPosts } from "../../utility";
 interface IProps {
   employee: IEmployee;
   isNew: boolean;
-  // onButtonSubmit: (values: INewEmployee | IEmployee) => Promise<void>;
+  onButtonSubmit: (values: INewEmployee | IEmployee) => Promise<void>;
 }
 
 const FormPage: React.FC<IProps> = (props): React.ReactElement => {
   const {
     employee: { name, role, phone },
     employee,
-    isNew
+    isNew,
+    onButtonSubmit
   } = props;
 
 
@@ -29,7 +30,7 @@ const FormPage: React.FC<IProps> = (props): React.ReactElement => {
         <PeopleEditForm
           employee={employee}
           isNew={isNew}
-          onButtonSubmit={(): Promise<void> => Promise.resolve()}
+          onButtonSubmit={onButtonSubmit}
         />
       </div>
     </>

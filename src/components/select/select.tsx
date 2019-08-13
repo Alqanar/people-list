@@ -30,7 +30,7 @@ class Select extends React.PureComponent<IProps, null> {
             value={filter}
             onChange={this.handleFilterItemSelect}
           >
-            {optionItem(vocabularyPosts)}
+            {optionItem(vocabularyPosts, true)}
           </select>
         </div>
       </>

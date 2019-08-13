@@ -1,3 +1,5 @@
+import { FieldValidator } from "final-form";
+
 export interface IEmployee {
   id: number;
   name: string;
@@ -13,6 +15,7 @@ export interface IInputProps {
   typeInput: string;
   placeholder?: string;
   pattern?: string;
+  validate?: FieldValidator<string>;
 }
 
 export interface INewEmployee {
