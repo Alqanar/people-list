@@ -31,16 +31,22 @@
   }
 }
 
+.employees-list__name {
+  color: $light-violet-color;
+  font-weight: 900;
+}
+
 .employees-list__link {
   display: flex;
   justify-content: space-between;
   padding-top: 25px;
   padding-bottom: 25px;
-}
 
-.employees-list__name {
-  color: $light-violet-color;
-  font-weight: 900;
+  &:hover,
+  &:hover .employees-list__name,
+  &:focus {
+    color: $yellow-color;
+  }
 }
 
 .employees-list__phone,

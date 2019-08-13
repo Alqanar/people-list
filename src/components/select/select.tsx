@@ -1,6 +1,7 @@
 import * as React from "react";
 
-import {vocabularyPosts} from "../../utility";
+import { vocabularyPosts } from "../../utility";
+import { optionItem } from "../../react-utility";
 
 
 interface IProps {
@@ -16,7 +17,7 @@ class Select extends React.PureComponent<IProps, null> {
   }
 
   public render(): React.ReactElement {
-    const {filter} = this.props;
+    const { filter } = this.props;
 
     return (
       <>
@@ -29,7 +30,7 @@ class Select extends React.PureComponent<IProps, null> {
             value={filter}
             onChange={this.handleFilterItemSelect}
           >
-            {this.optionItem(vocabularyPosts)}
+            {optionItem(vocabularyPosts)}
           </select>
         </div>
       </>
@@ -37,20 +38,9 @@ class Select extends React.PureComponent<IProps, null> {
   }
 
   private handleFilterItemSelect(event): void {
-    const {onFilterSelect} = this.props;
+    const { onFilterSelect } = this.props;
 
     onFilterSelect(event.target.value);
-  }
-
-  private optionItem = (selectFilter: object): React.ReactElement[] => {
-    return Object.keys(selectFilter).map((elem, i): React.ReactElement => (
-      <option
-        key={i}
-        value={elem}
-      >
-        {selectFilter[elem]}
-      </option>
-    ));
   }
 }
 

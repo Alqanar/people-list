@@ -28,8 +28,6 @@ const ListPage: React.FC<IProps> = (props): React.ReactElement => {
             employees={employeeList}
           />
         </section>
-
-
       </div>
     </>
   );

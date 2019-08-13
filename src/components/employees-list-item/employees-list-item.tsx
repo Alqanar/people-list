@@ -20,7 +20,7 @@ const EmployeesListItem: React.FC<IProps> = (props): React.ReactElement => {
 
   return (
     <li className="employees-list__item">
-      <Link to={`/employees/${id}`} className="link employees-list__link">
+      <Link to={`/employee/${id}`} className="link employees-list__link">
         <div className="employees-list__wrapper-personal-data">
           <div className="employees-list__personal-data">
             <p className="employees-list__name">{name}</p>
