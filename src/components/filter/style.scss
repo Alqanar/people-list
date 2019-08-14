@@ -14,6 +14,12 @@
   border-radius: 18px;
   cursor: pointer;
 
+  &--sorting {
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
   &:hover,
   &:focus {
     color: $black-color;
@@ -43,10 +49,13 @@
     content: "";
   }
 
-  &:hover::before,
-  &:focus::before {
+  &:hover::before {
     border-color: $pink-color;
   }
+}
+
+.filter__checkbox-input:focus + .filter__checkbox-label:before {
+  border-color: $pink-color;
 }
 
 .filter__checkbox-input:checked + .filter__checkbox-label:after {

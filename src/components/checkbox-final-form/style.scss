@@ -1,0 +1,66 @@
+@import "../../colors.scss";
+
+.checkbox__pseudo-label {
+  &::before,
+  &::after {
+    position: absolute;
+    left: -20px;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    background-color: $light-violet-color;
+    border-radius: 50%;
+    content: "";
+  }
+
+  &::before {
+    top: 510px;
+  }
+
+  &::after {
+    top: 650px;
+  }
+}
+
+.checkbox__label {
+  position: relative;
+  padding-left: 40px;
+  padding-top: 7px;
+  padding-bottom: 8px;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid $green-color;
+    border-radius: 10px;
+    content: "";
+  }
+
+  &:hover::before{
+    border-color: $violet-color;
+  }
+}
+
+.checkbox__input:focus + .checkbox__label::before {
+  border: 1px solid $violet-color;
+}
+
+.checkbox__input:checked + .checkbox__label::after {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 14px;
+  height: 14px;
+  background-color: $green-color;
+  border-radius: 4px;
+  content: "";
+}
+
+.checkbox__input:checked + .checkbox__label:hover::after,
+.checkbox__input:focus + .checkbox__label::after  {
+  background-color: $violet-color;
+}

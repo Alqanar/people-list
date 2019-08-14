@@ -1,0 +1,21 @@
+@import "../../colors.scss";
+
+select {
+  padding: 5px 10px;
+  font-family: inherit;
+  border: 1px solid $green-color;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $violet-color;
+  }
+
+  &:focus {
+    border-color: $green-color;
+    box-shadow:
+      inset 1px 1px $green-color,
+      inset -1px -1px $green-color;
+    outline: none;
+  }
+}

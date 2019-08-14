@@ -4,7 +4,7 @@ import PeopleEditForm from "../people-edit-form/people-edit-form";
 import { INewEmployee, IEmployee } from "../../types";
 import { vocabularyPosts } from "../../utility";
 
-// import "./style.scss";
+import "./style.scss";
 
 interface IProps {
   employee?: IEmployee;
@@ -29,8 +29,8 @@ const FormPage: React.FC<IProps> = (props): React.ReactElement => {
           </h1>
           {isNew ? null : (
             <>
-              <p className="form-page__phone">{phone}</p>
-              <p className="form-page__role">{vocabularyPosts[role]}</p>
+              <p className="form-page__text form-page__text--phone">{phone}</p>
+              <p className="form-page__text form-page__text--role">{vocabularyPosts[role]}</p>
             </>
           )}
         </div>

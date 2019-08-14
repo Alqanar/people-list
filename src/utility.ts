@@ -44,7 +44,7 @@ const phonePattern = `\\+7 \\([0-9]{3}\\) [0-9]{3}-[0-9]{4}`
 const birthdayPattern = `[0-9]{4}-[0-9]{2}-[0-9]{2}`
 
 const required = (value): string | undefined =>
-  (value ? undefined : `Поле не может быть пустым`);
+  (value ? undefined : `* поле не может быть пустым`);
 
 const validatePhone = (value): string | undefined => {
   const idealPhone = new RegExp(phonePattern);
@@ -52,7 +52,7 @@ const validatePhone = (value): string | undefined => {
   if (idealPhone.test(value)) {
     return undefined;
   }
-  return `Введите телефон в формате +7 (999) 999-9999`
+  return `* введите телефон в формате +7 (999) 999-9999`
 }
 
 const validateBirthday = (value): string | undefined => {
@@ -61,7 +61,7 @@ const validateBirthday = (value): string | undefined => {
   if (idealBirthday.test(value)) {
     return undefined;
   }
-  return `Введите дату рождения в формате ГГГГ-ММ-ДД`
+  return `* введите дату рождения в формате ГГГГ-ММ-ДД`
 }
 
 const composeValidators = (...validators): FieldValidator<string> => (value): string | undefined =>

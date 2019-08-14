@@ -41,10 +41,12 @@
   justify-content: space-between;
   padding-top: 25px;
   padding-bottom: 25px;
+  outline: none;
 
   &:hover,
   &:hover .employees-list__name,
-  &:focus {
+  &:focus,
+  &:focus .employees-list__name {
     color: $pink-color;
   }
 }

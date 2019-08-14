@@ -8,6 +8,8 @@ import CheckboxFinalForm from "../checkbox-final-form/checkbox-final-form";
 import { INewEmployee, IEmployee } from "../../types";
 import { addZero, paramsInput, vocabularyPosts } from "../../utility";
 
+import "./style.scss";
+
 
 interface IProps {
   employee?: IEmployee;
@@ -53,20 +55,20 @@ class PeopleEditForm extends React.PureComponent<IProps, null> {
         initialValues={initialValues}
         render={({ handleSubmit }): React.ReactElement => (
           <form className="form" onSubmit={handleSubmit}>
-            <ul className="same-list">
+            <ul className="same-list form__list">
               {textInputs}
               <SelectFinalForm />
               <CheckboxFinalForm />
               <div className="form__buttons">
+                <Link to={`/`} className="link form__link">
+                  ❌ Отмена
+                </Link>
                 <button
                   className="form__button"
                   type="submit"
                 >
                   {isNew ? `Добавить` : `💾 Сохранить`}
                 </button>
-                <Link to={`/`} className="link form__link">
-                  ❌ Отмена
-                </Link>
               </div>
             </ul>
           </form>

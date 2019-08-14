@@ -1,0 +1,38 @@
+@import "../../colors.scss";
+
+.form-page {
+  padding: 0 20px 40px 20px;
+  background-color: $light-violet-color;
+  border-radius: 25px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+}
+
+.form-page__title {
+  margin: 0;
+  font-size: 26px;
+  line-height: 30px;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.form-page__wrapper-title {
+  display: flex;
+  color: $white-color;
+  min-height: 170px;
+  flex-direction: column;
+}
+
+.form-page__text {
+  margin: 0;
+  align-self: flex-end;
+
+  &--phone {
+    padding-top: 17px;
+  }
+
+  &--role {
+    padding-top: 7px;
+  }
+}

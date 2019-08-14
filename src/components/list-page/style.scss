@@ -18,10 +18,35 @@
 }
 
 .list-page__add-new-employee {
+  position: relative;
   display: block;
   font-size: 16px;
   line-height: 18px;
   padding-top: 30px;
+  padding-left: 35px;
+  outline: none;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 36px;
+    left: 0;
+    width: 20px;
+    height: 3px;
+    background-color: $green-color;
+    content: "";
+  }
+
+  &::after {
+    transform: rotate(90deg);
+  }
+
+  &:hover::before,
+  &:focus::before,
+  &:hover::after,
+  &:focus::after {
+    background-color: $pink-color;
+  }
 }
 
 .list-page__employees-list {
