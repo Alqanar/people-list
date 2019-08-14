@@ -12,8 +12,16 @@
 .list-page__title {
   margin: 0;
   font-size: 26px;
+  line-height: 30px;
   text-align: center;
-  padding-top: 40px;
+  padding-top: 30px;
+}
+
+.list-page__add-new-employee {
+  display: block;
+  font-size: 16px;
+  line-height: 18px;
+  padding-top: 30px;
 }
 
 .list-page__employees-list {

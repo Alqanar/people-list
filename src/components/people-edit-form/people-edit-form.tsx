@@ -6,11 +6,11 @@ import TextInput from "../text-input/text-input";
 import SelectFinalForm from "../select-final-form/select-final-form";
 import CheckboxFinalForm from "../checkbox-final-form/checkbox-final-form";
 import { INewEmployee, IEmployee } from "../../types";
-import { paramsInput, addZero } from "../../utility";
+import { addZero, paramsInput, vocabularyPosts } from "../../utility";
 
 
 interface IProps {
-  employee: IEmployee;
+  employee?: IEmployee;
   isNew: boolean;
   onButtonSubmit: (values: INewEmployee | IEmployee) => Promise<void>;
 }
@@ -24,8 +24,12 @@ class PeopleEditForm extends React.PureComponent<IProps, null> {
 
   public render(): React.ReactElement {
     const { employee, isNew } = this.props;
+    let birthday = ``;
 
-    const bd = employee.birthday;
+    if (employee) {
+      const bd = employee.birthday;
+      birthday = `${bd.getFullYear()}-${addZero(bd.getMonth() + 1)}-${bd.getDate()}`;
+    }
 
     const textInputs = paramsInput
       .map((param, i): React.ReactElement =>
@@ -36,11 +40,11 @@ class PeopleEditForm extends React.PureComponent<IProps, null> {
       );
 
     const initialValues = {
-      name: employee.name || ``,
-      phone: employee.phone || ``,
-      birthday: `${bd.getFullYear()}-${addZero(bd.getMonth() + 1)}-${bd.getDate()}` || ``,
-      role: employee.role,
-      isArchive: employee.isArchive
+      name: employee && employee.name || ``,
+      phone: employee && employee.phone || ``,
+      birthday,
+      role: employee && employee.role || Object.keys(vocabularyPosts)[1],
+      isArchive: employee && employee.isArchive || false
     };
 
     return (

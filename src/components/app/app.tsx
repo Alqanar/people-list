@@ -13,6 +13,7 @@ import { getSortEmployees } from "../../reducer/employees/selectors.js";
 interface IProps {
   employeesData: IEmployee[];
   onEditEmployee: (values: IEmployee) => Promise<void>;
+  onAddEmployee: (values: IEmployee) => Promise<void>;
 }
 
 class App extends React.PureComponent<IProps, null> {
@@ -21,15 +22,15 @@ class App extends React.PureComponent<IProps, null> {
 
     this.renderListPage = this.renderListPage.bind(this);
     this.renderFormPage = this.renderFormPage.bind(this);
-    // this.renderNewFormPage = this.renderNewFormPage.bind(this);
+    this.renderNewFormPage = this.renderNewFormPage.bind(this);
   }
 
   public render(): React.ReactElement {
     return (
       <Switch>
         <Route path="/" exact render={this.renderListPage} />
+        <Route path="/employee/new" exact render={this.renderNewFormPage} />
         <Route path="/employee/:id" exact render={this.renderFormPage} />
-        <Route path="/employee/new" exact render={this.renderFormPage} />
       </Switch>
     );
   }
@@ -40,6 +41,16 @@ class App extends React.PureComponent<IProps, null> {
     return (
       <ListPage
         employeeList={employeesData}
+      />
+    );
+  }
+
+  private renderNewFormPage(): React.ReactElement {
+    const { onAddEmployee } = this.props;
+    return (
+      <FormPage
+        isNew={true}
+        onButtonSubmit={onAddEmployee}
       />
     );
   }
@@ -73,7 +84,10 @@ const mapDispatchToProps = (dispatch): object => ({
     dispatch(ActionCreator.editEmployee(modifiedData));
     history.push(`/`);
   },
-  onAddEmployee: (newData): void => dispatch(ActionCreator.addEmployee(newData))
+  onAddEmployee: (newData): void => {
+    dispatch(ActionCreator.addEmployee(newData));
+    history.push(`/`);
+  }
 });
 
 export { App };

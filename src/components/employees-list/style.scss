@@ -22,11 +22,11 @@
     }
 
     &::before {
-      left: -34px;
+      left: -38px;
     }
 
     &::after {
-      right: -29px;
+      right: -34px;
     }
   }
 }
@@ -45,7 +45,7 @@
   &:hover,
   &:hover .employees-list__name,
   &:focus {
-    color: $yellow-color;
+    color: $pink-color;
   }
 }
 

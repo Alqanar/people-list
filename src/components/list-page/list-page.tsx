@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 import { IEmployee } from "../../types";
 import SortingList from "../sorting-list/sorting-list";
@@ -20,6 +21,9 @@ const ListPage: React.FC<IProps> = (props): React.ReactElement => {
     <>
       <div className="list-page">
         <h1 className="title list-page__title">База сотрудников</h1>
+        <Link to={`/employee/new`} className="link list-page__add-new-employee">
+          Добавить нового сотрудника
+        </Link>
         <Filter />
         <section className="list-page__employees-list">
           <h2 className="visual-hidden">Список сотрудников</h2>
