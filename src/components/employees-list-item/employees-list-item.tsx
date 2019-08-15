@@ -28,8 +28,8 @@ const EmployeesListItem: React.FC<IProps> = (props): React.ReactElement => {
           </div>
           <p className="employees-list__role">{vocabularyPosts[role]}</p>
         </div>
-        <p className="employees-list__birthday-long">{birthday.toLocaleString(LOCALE, dateLongStringOptions)}</p>
-        <p className="employees-list__birthday-short">{birthday.toLocaleString(LOCALE, dateShortStringOptions)}</p>
+        <p className="employees-list__birthday employees-list__birthday--long">{birthday.toLocaleString(LOCALE, dateLongStringOptions)}</p>
+        <p className="employees-list__birthday employees-list__birthday--short">{birthday.toLocaleString(LOCALE, dateShortStringOptions)}</p>
       </Link>
     </li>
   );

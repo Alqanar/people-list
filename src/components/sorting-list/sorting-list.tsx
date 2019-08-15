@@ -33,7 +33,7 @@ class SortingList extends React.PureComponent<IProps, null> {
       )
 
     return (
-      <ul className="same-list employees-list-title">
+      <ul className="same-list list-page__sorting-list sorting-list">
         {sortingList}
       </ul>
     );

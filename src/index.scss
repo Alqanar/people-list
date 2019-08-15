@@ -49,3 +49,11 @@ main {
   white-space: nowrap;
   clip: rect(0 0 0 0);
 }
+
+@media (min-width: 760px) {
+  main {
+    width: 70%;
+    min-width: 600px;
+    max-width: 1300px;
+  }
+}

@@ -30,7 +30,7 @@ class PeopleEditForm extends React.PureComponent<IProps, null> {
 
     if (employee) {
       const bd = employee.birthday;
-      birthday = `${bd.getFullYear()}-${addZero(bd.getMonth() + 1)}-${bd.getDate()}`;
+      birthday = `${bd.getFullYear()}-${addZero(bd.getMonth() + 1)}-${addZero(bd.getDate())}`;
     }
 
     const textInputs = paramsInput

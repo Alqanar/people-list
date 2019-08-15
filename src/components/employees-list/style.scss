@@ -6,28 +6,25 @@
 
 .employees-list__item {
   position: relative;
+  border-top: 4px dashed $grey-color;
 
-  &:not(:last-child) {
-    border-bottom: 5px dashed $grey-color;
+  &::before,
+  &::after {
+    position: absolute;
+    top: -19px;
+    width: 35px;
+    height: 35px;
+    background-color: $grey-color;
+    border-radius: 50%;
+    content: "";
+  }
 
-    &::before,
-    &::after {
-      position: absolute;
-      top: 90px;
-      width: 35px;
-      height: 35px;
-      background-color: $grey-color;
-      border-radius: 50%;
-      content: "";
-    }
+  &::before {
+    left: -38px;
+  }
 
-    &::before {
-      left: -38px;
-    }
-
-    &::after {
-      right: -34px;
-    }
+  &::after {
+    right: -34px;
   }
 }
 
@@ -57,10 +54,71 @@
   padding-top: 3px;
 }
 
-.employees-list__birthday-long {
-  display: none;
+.employees-list__birthday {
+  align-self: center;
+
+  &--long {
+    display: none;
+  }
 }
 
-.employees-list__birthday-short {
-  align-self: center;
+
+@media (min-width: 760px) {
+  .employees-list__wrapper-personal-data {
+    display: flex;
+    width: 58%;
+    justify-content: space-between;
+  }
+
+  .employees-list__item {
+    border-top: 0.4vw dashed $grey-color;
+
+    &::before,
+    &::after {
+      top: -3vw;
+      width: 5.5vw;
+      height: 5.5vw;
+    }
+
+    &::before {
+      left: -6.8vw;
+    }
+  
+    &::after {
+      right: -6.8vw;
+    }
+  }
+
+  .employees-list__link {
+    padding-top: 3.5vw;
+    padding-bottom: 3.5vw;
+  }
+
+  .employees-list__name,
+  .employees-list__role,
+  .employees-list__birthday {
+    font-size: 1.6vw;
+    line-height: 1.8vw;
+  }
+
+  .employees-list__role {
+    align-self: center;
+  }
+
+  .employees-list__phone {
+    font-size: 1.4vw;
+    line-height: 1.6vw;
+    opacity: 0.6;
+    padding-top: 1vw;
+  }
+
+  .employees-list__birthday {
+    &--long {
+      display: block;
+    }
+
+    &--short {
+      display: none;
+    }
+  }
 }

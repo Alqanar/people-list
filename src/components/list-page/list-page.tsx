@@ -20,11 +20,13 @@ const ListPage: React.FC<IProps> = (props): React.ReactElement => {
   return (
     <>
       <div className="list-page">
-        <h1 className="title list-page__title">База сотрудников</h1>
-        <Link to={`/employee/new`} className="link list-page__add-new-employee">
-          Добавить нового сотрудника
-        </Link>
-        <Filter />
+        <div className="list-page__wrapper-header">
+          <h1 className="title list-page__title">База сотрудников</h1>
+          <Link to={`/employee/new`} className="link list-page__add-new-employee">
+            Добавить нового сотрудника
+          </Link>
+          <Filter />
+        </div>
         <section className="list-page__employees-list">
           <h2 className="visual-hidden">Список сотрудников</h2>
           <SortingList />

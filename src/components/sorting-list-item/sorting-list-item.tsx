@@ -17,13 +17,13 @@ class SortingListItem extends React.PureComponent<IProps, null> {
   }
 
   public render(): React.ReactElement {
-    const {name, isActive, isDisabled} = this.props;
+    const { name, isActive, isDisabled } = this.props;
 
     return (
-      <li className="employees-list-title__sort-item">
+      <li className="sorting-list__sort-item">
         <button
           onClick={this.handleSortingItemClick}
-          className={`employees-list-title__sorting-button ${isActive ? `employees-list-title__sorting-button--active` : ``}`}
+          className={`sorting-list__sorting-button ${isActive ? `sorting-list__sorting-button--active` : ``}`}
           disabled={isDisabled}
         >
           {name}
@@ -33,7 +33,7 @@ class SortingListItem extends React.PureComponent<IProps, null> {
   }
 
   private handleSortingItemClick(event): void {
-    const {type, onSortingClick} = this.props;
+    const { type, onSortingClick } = this.props;
 
     event.preventDefault();
     onSortingClick(type);
