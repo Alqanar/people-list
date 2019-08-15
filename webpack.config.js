@@ -1,5 +1,8 @@
 const path = require(`path`);
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const resourcePath = process.env.NODE_ENV === `production` ? `/people-list` : `/`;
 
 module.exports = {
   entry: `./src/index.tsx`,
@@ -18,6 +21,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style.css'
     }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      resourcePath,
+      inject: false
+    })
   ],
   module: {
     rules: [
