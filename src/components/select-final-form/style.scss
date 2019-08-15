@@ -1,11 +1,12 @@
 @import "../../colors.scss";
 
-select {
+.form__item select {
   padding: 5px 10px;
   font-family: inherit;
   border: 1px solid $green-color;
   border-radius: 10px;
   cursor: pointer;
+  -webkit-appearance:none;
 
   &:hover {
     border-color: $violet-color;
@@ -21,7 +22,7 @@ select {
 }
 
 @media (min-width: 760px) {
-  select {
+  .form__item select {
     padding: 0.5vw 1vw;
     font-size: 1.4vw;
     line-height: 1.6vw;
