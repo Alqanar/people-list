@@ -3,7 +3,7 @@
 .form__list {
   position: relative;
 
-  li:nth-of-type(2n) {
+  .form__item:nth-of-type(2n) {
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     align-items: flex-start;
@@ -14,7 +14,7 @@
     }
   }
 
-  li:nth-of-type(2n+1) {
+  .form__item:nth-of-type(2n+1) {
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     align-items: flex-end;
@@ -189,5 +189,97 @@
     color: $violet-color;
     background-color: $white-color;
     outline: none;
+  }
+}
+
+@media (min-width: 760px) {
+  .form {
+    padding: 7vw 4vw 4vw;
+    background-color: $white-color;
+    border: 0.1vw solid $green-color;
+    border-radius: 2.5vw;
+    flex: 1;
+  }
+
+  .form__list {
+    .form__item:nth-of-type(2n),
+    .form__item:nth-of-type(2n+1) {
+      border-radius: 2.5vw;
+    }
+  }
+
+  .form__item,
+  .form__label {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  .form__item {
+    border: 0.1vw solid $green-color;
+    min-height: 11vw;
+    padding-top: 1.5vw;
+
+    &:not(:first-child) {
+      margin-top: 3vw;
+    }
+  }
+
+  .form__label,
+  .form__input {
+    font-size: 1.4vw;
+    line-height: 1.6vw;
+  }
+
+  .form__input {
+    padding: 0.5vw 1vw;
+    border-radius: 1vw;
+    border-width: 0.1vw;
+
+    &:focus {
+      border-color: $light-violet-color;
+      box-shadow:
+        inset 1px 1px $light-violet-color,
+        inset -1px -1px $light-violet-color;
+    }
+  }
+
+  .form__item select:focus {
+    border-color: $light-violet-color;
+    box-shadow:
+      inset 1px 1px $light-violet-color,
+      inset -1px -1px $light-violet-color;
+  }
+
+  .form__error {
+    font-size: 1vw;
+    line-height: 1.2vw;
+    padding-top: 2vw;
+  }
+
+  .form__link {
+    padding: 1vw 0.5vw;
+    font-size: 1.4vw;
+    line-height: 1.6vw;
+    color: $light-violet-color;
+  }
+
+  .form__button {
+    padding: 0.5vw 1vw;
+    font-size: 1.8vw;
+    line-height: 2vw;
+    color: $green-color;
+    background-color: $grey-color;
+    border: 0.2vw solid $green-color;
+    border-radius: 1.2vw;
+    max-width: 17vw;
+    cursor: pointer;
+    min-height: 3vw;
+
+    &:hover,
+    &:focus {
+      border-color: $light-violet-color;
+    }
   }
 }

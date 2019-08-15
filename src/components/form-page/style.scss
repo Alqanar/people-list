@@ -36,3 +36,34 @@
     padding-top: 7px;
   }
 }
+
+@media (min-width: 760px) {
+  .form-page {
+    display: flex;
+    padding: 0;
+    border-radius: 2.5vw;
+    margin-top: 4vw;
+    margin-bottom: 4vw;
+  }
+
+  .form-page__wrapper-title {
+    width: 25vw;
+    background-color: $light-violet-color;
+    border-radius: 2.5vw;
+    padding-top: 4vw
+  }
+
+  .form-page__title {
+    padding: 3vw 3vw 0;
+    font-size: 2.6vw;
+    line-height: 3vw;
+  }
+
+  .form-page__text {
+    font-size: 1.4vw;
+    line-height: 1.6vw;
+    padding-top: 4vw;
+    padding-left: 4.3vw;
+    align-self: flex-start;
+  }
+}

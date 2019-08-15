@@ -54,7 +54,7 @@ class PeopleEditForm extends React.PureComponent<IProps, null> {
         onSubmit={this.handleButtonSubmit}
         initialValues={initialValues}
         render={({ handleSubmit }): React.ReactElement => (
-          <form className="form" onSubmit={handleSubmit}>
+          <form className="form-page__form form" onSubmit={handleSubmit}>
             <ul className="same-list form__list">
               {textInputs}
               <SelectFinalForm />

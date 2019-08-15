@@ -97,12 +97,16 @@
 
     &::before {
       top: 2.5vw;
-      left: 0px;
       width: 3vw;
       height: 3vw;
-      border: 0.3vw solid $green-color;
-      border-radius: 50%;
-      content: "";
+      border-width: 0.3vw;
     }
+  }
+
+  .filter__checkbox-input:checked + .filter__checkbox-label:after {
+    top: 3.3vw;
+    left: 0.8vw;
+    width: 1.4vw;
+    height: 1.4vw;
   }
 }
