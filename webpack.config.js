@@ -2,7 +2,7 @@ const path = require(`path`);
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const resourcePath = process.env.NODE_ENV === `production` ? `/people-list` : `/`;
+const resourcePath = process.env.NODE_ENV === `production` ? `/people-list/` : `/`;
 
 module.exports = {
   entry: `./src/index.tsx`,
